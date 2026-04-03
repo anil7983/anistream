@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: anistream
+    runtime: node
+    # Build: install deps + seed the anime database
+    buildCommand: cd backend && npm install && node seed/seed.js
+    # Start: run the Express server (PORT is provided by Render)
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true   # Render auto-generates a secure random value
+      - key: NODE_VERSION
+        value: 22             # REQUIRED — node:sqlite needs Node 22+
+    plan: free
+    # Health check endpoint
+    healthCheckPath: /api/health

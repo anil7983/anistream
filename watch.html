@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch — AniStream</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="watch-body">
+
+  <!-- Minimal nav for watch page -->
+  <nav class="navbar watch-nav" id="navbar">
+    <a class="nav-logo" href="/">AniStream</a>
+    <div class="nav-links">
+      <a class="nav-link" id="watch-anime-link" href="#">Back to Anime</a>
+    </div>
+    <div class="nav-actions">
+      <a href="/profile.html" class="nav-avatar" data-auth="user" style="display:none">
+        <span data-auth="username"></span>
+      </a>
+    </div>
+  </nav>
+
+  <div id="loading" class="page-loading"><div class="spinner"></div></div>
+
+  <div class="watch-layout">
+    <!-- Player -->
+    <div class="player-area">
+      <div class="player-wrap">
+        <iframe
+          id="player-iframe"
+          style="display:none"
+          allowfullscreen
+          allow="autoplay; encrypted-media; picture-in-picture"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Anime Player">
+        </iframe>
+        <div id="no-stream" class="no-stream" style="display:none">
+          <div class="no-stream-inner">
+            <span class="no-stream-icon">🎬</span>
+            <h2>Stream not available yet</h2>
+            <p>This season hasn't been linked yet. You can watch it directly on YouTube.</p>
+            <a class="btn btn-primary" id="yt-search-btn" href="#" target="_blank" rel="noopener">Watch on YouTube →</a>
+            <a class="btn btn-glass" id="watch-anime-link2" href="#">← Back to Anime</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-info">
+        <div class="player-meta">
+          <img class="player-thumb" id="watch-cover" src="" alt="">
+          <div>
+            <h1 class="player-title" id="watch-title">Loading...</h1>
+            <div class="season-nav">
+              <a class="btn btn-outline btn-sm" id="prev-season" href="#">← Previous Season</a>
+              <a class="btn btn-outline btn-sm" id="next-season" href="#">Next Season →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Season Sidebar -->
+    <aside class="season-sidebar">
+      <h3 class="sidebar-title">Seasons</h3>
+      <nav id="season-list" class="season-list"></nav>
+    </aside>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/watch.js"></script>
+</body>
+</html>

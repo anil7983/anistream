@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Detail — AniStream</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <a class="nav-logo" href="/">AniStream</a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/browse.html" class="nav-link">Browse</a>
+    </div>
+    <div class="nav-actions">
+      <a href="/login.html" class="btn btn-outline" data-auth="login">Sign In</a>
+      <a href="/profile.html" class="nav-avatar" data-auth="user" style="display:none">
+        <span data-auth="username"></span>
+      </a>
+    </div>
+  </nav>
+
+  <div id="loading" class="page-loading"><div class="spinner"></div></div>
+
+  <div id="anime-content" style="display:none">
+    <!-- Banner -->
+    <div class="anime-banner" id="anime-banner">
+      <div class="anime-banner-overlay"></div>
+    </div>
+
+    <div class="anime-detail-layout">
+      <!-- Left: Cover -->
+      <aside class="anime-sidebar">
+        <img class="anime-cover-img" id="anime-cover" src="" alt="">
+        <a class="btn btn-primary watch-btn" id="watch-btn" href="#" style="display:none">▶ Watch Now</a>
+        <button class="btn btn-outline watchlist-btn" id="watchlist-btn">+ Add to Watchlist</button>
+      </aside>
+
+      <!-- Right: Info -->
+      <div class="anime-info">
+        <p class="anime-title-jp" id="anime-title-jp"></p>
+        <h1 class="anime-title" id="anime-title"></h1>
+
+        <div class="anime-meta">
+          <span class="meta-badge rating-badge" id="anime-rating"></span>
+          <span class="meta-badge" id="anime-year"></span>
+          <span class="meta-badge" id="anime-type"></span>
+          <span class="meta-badge" id="anime-status"></span>
+          <span class="meta-badge"><span id="anime-episodes"></span> eps</span>
+        </div>
+
+        <div class="anime-genres" id="anime-genres"></div>
+
+        <div class="synopsis-block">
+          <h2 class="section-label">Synopsis</h2>
+          <p class="anime-synopsis" id="anime-synopsis"></p>
+        </div>
+
+        <!-- Seasons -->
+        <div class="seasons-block">
+          <h2 class="section-label">Seasons & Episodes</h2>
+          <div id="seasons-container"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-logo">AniStream</p>
+    <p class="footer-note">Free anime streaming powered by official YouTube channels.</p>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/anime-detail.js"></script>
+</body>
+</html>

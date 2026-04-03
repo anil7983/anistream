@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse all free anime on AniStream — search by genre, type, and rating.">
+  <title>Browse Anime — AniStream</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <a class="nav-logo" href="/">AniStream</a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/browse.html" class="nav-link active">Browse</a>
+    </div>
+    <div class="nav-actions">
+      <a href="/login.html" class="btn btn-outline" data-auth="login">Sign In</a>
+      <a href="/profile.html" class="nav-avatar" data-auth="user" style="display:none">
+        <span data-auth="username"></span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="browse-page">
+    <div class="browse-header">
+      <h1>Browse Anime</h1>
+      <div class="browse-controls">
+        <input type="search" id="search-input" placeholder="🔍 Search anime..." autocomplete="off">
+        <select id="sort-select">
+          <option value="rating">Top Rated</option>
+          <option value="year">Newest</option>
+          <option value="title">A–Z</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="genre-filters" id="genre-filters" role="group" aria-label="Genre filter">
+      <div class="spinner-sm"></div>
+    </div>
+
+    <div class="browse-stats">
+      <span id="results-count"></span>
+    </div>
+
+    <div class="anime-grid" id="browse-grid">
+      <div class="browse-loading"><div class="spinner"></div></div>
+    </div>
+
+    <div class="pagination">
+      <button class="btn btn-outline" id="prev-btn" disabled>← Prev</button>
+      <span id="page-info"></span>
+      <button class="btn btn-outline" id="next-btn" disabled>Next →</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-logo">AniStream</p>
+    <p class="footer-note">Free anime streaming powered by official YouTube channels.</p>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    // Pick up ?genre= and ?search= from URL
+    const _p = new URLSearchParams(location.search);
+    const urlGenre = _p.get('genre');
+    const urlSearch = _p.get('search');
+    document.addEventListener('DOMContentLoaded', () => {
+      if (urlSearch) {
+        const inp = document.getElementById('search-input');
+        if (inp) { inp.value = urlSearch; inp.dispatchEvent(new Event('input')); }
+      }
+      if (urlGenre) {
+        const el = document.querySelector(`[data-genre="${urlGenre}"]`);
+        if (el) el.click();
+      }
+    });
+  </script>
+  <script src="/js/browse.js"></script>
+</body>
+</html>

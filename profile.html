@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — AniStream</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <a class="nav-logo" href="/">AniStream</a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/browse.html" class="nav-link">Browse</a>
+    </div>
+    <div class="nav-actions">
+      <a href="/login.html" class="btn btn-outline" data-auth="login">Sign In</a>
+      <a href="/profile.html" class="nav-avatar" data-auth="user" style="display:none">
+        <span data-auth="username"></span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="profile-page">
+    <!-- Profile header -->
+    <div class="profile-header">
+      <div class="profile-avatar" id="profile-avatar">?</div>
+      <div class="profile-info">
+        <h1 class="profile-username" id="profile-username">Loading...</h1>
+        <p class="profile-email" id="profile-email"></p>
+        <div class="profile-stats">
+          <div class="stat-item">
+            <span class="stat-num" id="watchlist-count">0</span>
+            <span class="stat-label">Watchlist</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="history-count">0</span>
+            <span class="stat-label">Watched</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-outline logout-btn" id="logout-btn">Sign Out</button>
+    </div>
+
+    <!-- Watchlist -->
+    <section class="profile-section">
+      <h2 class="section-label">My Watchlist</h2>
+      <div class="anime-grid" id="watchlist-grid">
+        <div class="spinner"></div>
+      </div>
+    </section>
+
+    <!-- Watch History -->
+    <section class="profile-section">
+      <h2 class="section-label">Watch History</h2>
+      <div class="history-list" id="history-list">
+        <div class="spinner"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-logo">AniStream</p>
+    <p class="footer-note">Free anime streaming powered by official YouTube channels.</p>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>

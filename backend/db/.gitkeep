@@ -1,0 +1,2 @@
+# placeholder — keeps the db/ directory tracked by git
+# The actual anime.db file is generated at runtime (excluded by .gitignore)

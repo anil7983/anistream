@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AniStream — Watch free full-season anime online. Demon Slayer, Attack on Titan, Naruto and more.">
+  <title>AniStream — Free Anime Streaming</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="/">AniStream</a>
+  <div class="nav-links">
+    <a href="/" class="nav-link active">Home</a>
+    <a href="/browse.html" class="nav-link">Browse</a>
+  </div>
+  <div class="nav-actions">
+    <!-- Live Search -->
+    <div class="nav-search" id="nav-search">
+      <span class="nav-search-icon">🔍</span>
+      <input type="search" class="nav-search-input" id="nav-search-input" placeholder="Search anime..." autocomplete="off">
+      <div class="search-dropdown" id="search-dropdown">
+        <div class="search-empty">Start typing to search...</div>
+      </div>
+    </div>
+    <a href="/login.html" class="btn btn-outline" data-auth="login" style="padding:8px 18px;">Sign In</a>
+    <a href="/profile.html" class="nav-avatar" data-auth="user" style="display:none">
+      <span data-auth="username"></span>
+    </a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero" aria-label="Featured anime">
+  <div class="hero-overlay"></div>
+  <!-- Slides injected by JS -->
+  <div id="hero-slides"></div>
+
+  <!-- Content panel (updated dynamically) -->
+  <div class="hero-content" id="hero-content">
+    <span class="hero-badge">⚡ Featured</span>
+    <div class="hero-genres" id="hero-genres"></div>
+    <h1 class="hero-title" id="hero-title">Loading...</h1>
+    <div class="hero-meta">
+      <span class="hero-rating" id="hero-rating"></span>
+      <span class="hero-year" id="hero-year"></span>
+    </div>
+    <p class="hero-synopsis" id="hero-synopsis"></p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" id="hero-watch-btn" href="#" style="font-size:1rem;padding:13px 28px;">▶ Watch Now</a>
+      <button class="btn btn-glass" id="hero-list-btn">+ My List</button>
+    </div>
+  </div>
+
+  <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Hero navigation"></div>
+</section>
+
+<!-- ── CONTENT ── -->
+<main class="rows-container">
+  <div id="loading" class="global-loading"><div class="spinner"></div></div>
+
+  <!-- Continue Watching -->
+  <section class="row-section" id="continue-section" style="display:none" data-auth="user">
+    <div class="row-header">
+      <h2 class="row-title"><span class="row-title-icon">▶️</span> Continue Watching</h2>
+    </div>
+    <div class="row-scroll">
+      <button class="scroll-btn scroll-left" aria-label="Scroll left">‹</button>
+      <div class="row-track" id="continue-track"></div>
+      <button class="scroll-btn scroll-right" aria-label="Scroll right">›</button>
+    </div>
+  </section>
+
+  <!-- Trending Now -->
+  <section class="row-section" id="row-trending">
+    <div class="row-header">
+      <h2 class="row-title"><span class="row-title-icon">🔥</span> Trending Now</h2>
+      <a class="see-all" href="/browse.html">See All →</a>
+    </div>
+    <div class="row-scroll">
+      <button class="scroll-btn scroll-left" aria-label="Scroll left">‹</button>
+      <div class="row-track" id="trending-track"></div>
+      <button class="scroll-btn scroll-right" aria-label="Scroll right">›</button>
+    </div>
+  </section>
+
+  <!-- Action -->
+  <section class="row-section" id="row-action">
+    <div class="row-header">
+      <h2 class="row-title"><span class="row-title-icon">⚔️</span> Top Action</h2>
+      <a class="see-all" href="/browse.html?genre=Action">See All →</a>
+    </div>
+    <div class="row-scroll">
+      <button class="scroll-btn scroll-left" aria-label="Scroll left">‹</button>
+      <div class="row-track" id="action-track"></div>
+      <button class="scroll-btn scroll-right" aria-label="Scroll right">›</button>
+    </div>
+  </section>
+
+  <!-- Fantasy & Isekai -->
+  <section class="row-section" id="row-fantasy">
+    <div class="row-header">
+      <h2 class="row-title"><span class="row-title-icon">🌟</span> Fantasy & Isekai</h2>
+      <a class="see-all" href="/browse.html?genre=Fantasy">See All →</a>
+    </div>
+    <div class="row-scroll">
+      <button class="scroll-btn scroll-left" aria-label="Scroll left">‹</button>
+      <div class="row-track" id="isekai-track"></div>
+      <button class="scroll-btn scroll-right" aria-label="Scroll right">›</button>
+    </div>
+  </section>
+
+  <!-- Romance -->
+  <section class="row-section" id="row-romance">
+    <div class="row-header">
+      <h2 class="row-title"><span class="row-title-icon">💘</span> Romance & Drama</h2>
+      <a class="see-all" href="/browse.html?genre=Romance">See All →</a>
+    </div>
+    <div class="row-scroll">
+      <button class="scroll-btn scroll-left" aria-label="Scroll left">‹</button>
+      <div class="row-track" id="romance-track"></div>
+      <button class="scroll-btn scroll-right" aria-label="Scroll right">›</button>
+    </div>
+  </section>
+
+  <!-- Supernatural -->
+  <section class="row-section" id="row-supernatural">
+    <div class="row-header">
+      <h2 class="row-title"><span class="row-title-icon">👁️</span> Supernatural</h2>
+      <a class="see-all" href="/browse.html?genre=Supernatural">See All →</a>
+    </div>
+    <div class="row-scroll">
+      <button class="scroll-btn scroll-left" aria-label="Scroll left">‹</button>
+      <div class="row-track" id="supernatural-track"></div>
+      <button class="scroll-btn scroll-right" aria-label="Scroll right">›</button>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="footer-logo">AniStream</p>
+  <p class="footer-note">Free anime streaming via official YouTube channels (Muse Asia, VIZ Media, Crunchyroll).<br>All content belongs to respective rights holders.</p>
+  <div class="footer-links">
+    <a href="/browse.html">Browse</a>
+    <a href="/login.html">Sign In</a>
+    <a href="/profile.html">My Profile</a>
+  </div>
+</footer>
+
+<script src="/js/api.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>
