@@ -1,7 +1,7 @@
 {
   "name": "anime-stream-backend",
   "version": "1.0.0",
-  "description": "AniStream — anime streaming platform backend",
+  "description": "RyuStream — anime streaming platform backend",
   "main": "server.js",
   "engines": {
     "node": ">=18.0.0"

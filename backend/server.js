@@ -30,7 +30,7 @@ app.get(/^(?!\/api).*$/, (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n🎌 AniStream running at:`);
+  console.log(`\n🐉 RyuStream running at:`);
   console.log(`   Local:    http://localhost:${PORT}`);
   console.log(`   Network:  http://192.168.100.1:${PORT}  (use this on other devices)\n`);
 });

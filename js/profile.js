@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('profile-username').textContent = user.username;
   document.getElementById('profile-email').textContent = user.email;
   document.getElementById('profile-avatar').textContent = user.username?.charAt(0).toUpperCase();
-  document.title = `${user.username}'s Profile — AniStream`;
+  document.title = `${user.username}'s Profile — RyuStream`;
 
   document.getElementById('logout-btn')?.addEventListener('click', () => auth.logout());
 

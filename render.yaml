@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: anistream
+    name: ryustream
     runtime: node
     # Build: install deps + seed the anime database
     buildCommand: cd backend && npm install && node seed/seed.js

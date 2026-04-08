@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('anime-synopsis').textContent = anime.synopsis || 'No synopsis available.';
     document.getElementById('anime-genres').innerHTML =
       genres.map(g => `<a class="genre-tag" href="/browse.html?genre=${encodeURIComponent(g)}">${g}</a>`).join('');
-    document.title = `${anime.title_english || anime.title} — AniStream`;
+    document.title = `${anime.title_english || anime.title} — RyuStream`;
 
     // Watch button (goes to first season)
     const watchBtn = document.getElementById('watch-btn');

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const anime = await api.getAnime(id);
     const season = anime.seasons?.find(s => s.season_number === seasonNum) || anime.seasons?.[0];
 
-    document.title = `Watching: ${anime.title_english || anime.title} — AniStream`;
+    document.title = `Watching: ${anime.title_english || anime.title} — RyuStream`;
     document.getElementById('watch-title').textContent =
       `${anime.title_english || anime.title} — ${season?.title || `Season ${seasonNum}`}`;
     document.getElementById('watch-anime-link').href = `/anime.html?id=${id}`;
