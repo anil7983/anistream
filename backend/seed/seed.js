@@ -1,14 +1,14 @@
 /**
- * Seed script using Node.js 22 built-in node:sqlite
+ * Seed script using better-sqlite3
  * Run: node seed/seed.js
  */
 const axios = require('axios');
-const { DatabaseSync } = require('node:sqlite');
+const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 
 const dbPath = path.join(__dirname, '../db/anime.db');
-const db = new DatabaseSync(dbPath);
+const db = new Database(dbPath);
 
 db.exec(`PRAGMA journal_mode=WAL;`);
 db.exec(`PRAGMA foreign_keys=ON;`);

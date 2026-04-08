@@ -1,15 +1,15 @@
 /**
- * Database layer using Node.js 22 built-in node:sqlite
- * No native compilation or extra packages required.
+ * Database layer using better-sqlite3
+ * Works on Node.js 16+ with no version constraints.
  */
-const { DatabaseSync } = require('node:sqlite');
+const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 
 const dbDir = path.join(__dirname);
 if (!fs.existsSync(dbDir)) fs.mkdirSync(dbDir, { recursive: true });
 
-const db = new DatabaseSync(path.join(dbDir, 'anime.db'));
+const db = new Database(path.join(dbDir, 'anime.db'));
 
 function initDB() {
   db.exec(`PRAGMA journal_mode=WAL;`);
@@ -70,7 +70,7 @@ function initDB() {
     );
   `);
 
-  console.log('✅ Database initialized (node:sqlite)');
+  console.log('✅ Database initialized (better-sqlite3)');
   return db;
 }
 
