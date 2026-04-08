@@ -107,7 +107,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: linear-gradient(135deg, var(--accent), #ff7eb0);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 12px rgba(255,58,110,0.5));
+  display: flex; align-items: center;
 }
+.nav-logo-img {
+  height: 32px; width: auto;
+  filter: drop-shadow(0 0 10px rgba(224,82,160,0.6));
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+.nav-logo:hover .nav-logo-img {
+  filter: drop-shadow(0 0 16px rgba(224,82,160,0.9));
+  transform: scale(1.04);
+}
+
 
 .nav-links { display: flex; gap: 4px; flex: 1; }
 .nav-link {
