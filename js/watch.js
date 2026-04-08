@@ -25,16 +25,36 @@ document.addEventListener('DOMContentLoaded', async () => {
       iframe.style.display = '';
       noStream.style.display = 'none';
       if (auth.isLoggedIn()) api.addHistory(id, seasonNum, 1).catch(() => {});
+
+      // If embed fails (e.g. region-locked), show fallback after 5 sec
+      iframe.addEventListener('load', () => {
+        setTimeout(() => {
+          try {
+            // If iframe contentDocument is null, it's blocked/failed
+            if (!iframe.contentDocument && !iframe.contentWindow?.document) {
+              iframe.style.display = 'none';
+              noStream.style.display = '';
+              setYouTubeLinks(anime, season);
+            }
+          } catch { /* cross-origin — means it loaded OK */ }
+        }, 5000);
+      });
     } else {
       iframe.style.display = 'none';
       noStream.style.display = '';
-      // Set YouTube search fallback
-      const ytBtn = document.getElementById('yt-search-btn');
-      if (ytBtn) {
-        const q = encodeURIComponent(`${anime.title_english || anime.title} ${season?.title || ''} full episode english sub`);
-        ytBtn.href = `https://www.youtube.com/results?search_query=${q}`;
-      }
+      setYouTubeLinks(anime, season);
     }
+
+    function setYouTubeLinks(anime, season) {
+      const title = anime.title_english || anime.title;
+      const q = encodeURIComponent(`${title} ${season?.title || ''} full episode english sub official`);
+      const ytBtn = document.getElementById('yt-search-btn');
+      if (ytBtn) ytBtn.href = `https://www.youtube.com/results?search_query=${q}`;
+      // Add Crunchyroll search link
+      const crBtn = document.getElementById('cr-search-btn');
+      if (crBtn) crBtn.href = `https://www.crunchyroll.com/search?q=${encodeURIComponent(title)}`;
+    }
+
 
     // Season switcher
     const seasonList = document.getElementById('season-list');

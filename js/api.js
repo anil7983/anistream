@@ -35,6 +35,8 @@ const api = {
   login: (email, password) => api.post('/auth/login', { email, password }),
   register: (email, username, password) => api.post('/auth/register', { email, username, password }),
   getMe: () => api.get('/auth/me'),
+  sendOTP: (email) => api.post('/auth/send-otp', { email }),
+  verifyOTP: (email, otp) => api.post('/auth/verify-otp', { email, otp }),
 
   // User
   getWatchlist: () => api.get('/user/watchlist'),
